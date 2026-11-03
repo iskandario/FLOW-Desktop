@@ -1,0 +1,29 @@
+/* Functional DJ performance layout — explicit load controls and compact mixer. */
+.workspace{grid-template-columns:minmax(290px,23%) minmax(0,1fr) minmax(230px,18%)!important}
+.stage{min-height:0!important}
+.stage #aura{opacity:.12!important;pointer-events:none!important}
+.stage-copy{min-height:0!important}
+.deck-card{min-height:185px!important;background:#121822!important;border:1px solid #314156!important;border-radius:7px!important;padding:18px!important}
+.deck-card:nth-child(2){border-top:3px solid #00cdeb!important}
+#deckA{border-top:3px solid #eea340!important}
+.deck-card>div:first-child{letter-spacing:.12em}
+.deck-card>b{font-size:clamp(15px,1.35vw,25px)!important}
+.deck-transport{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:10px!important;margin-top:18px!important}
+.deck-transport button{cursor:pointer!important;min-height:38px!important;padding:9px 16px!important;border:1px solid #48566a!important;border-radius:5px!important;background:#202b3a!important;color:#f7f9ff!important;font-size:12px!important;font-weight:800!important;letter-spacing:.08em!important}
+.deck-transport .deck-play-button{background:#e2f04d!important;color:#10151b!important;font-size:15px!important;min-width:118px!important}
+.deck-transport button[data-action=sync]{background:#29405a!important;color:#92e6ff!important}
+.deck-transport button:hover,.track-load-actions button:hover{filter:brightness(1.25)}
+.track-row{grid-template-columns:34px minmax(0,1fr) 45px 76px!important;gap:7px!important}
+.track-load-actions{display:flex!important;gap:4px!important;align-items:center!important}
+.track-load-actions button{cursor:pointer;background:#24364a;color:#fff;border:1px solid #526579;border-radius:4px;min-width:34px;height:29px;font-weight:800;font-size:12px}
+.track-load-actions button[data-load=a]{border-color:#e2a650;color:#ffd48c}
+.track-load-actions button[data-load=b]{border-color:#34d6ef;color:#a5f1ff}
+.mixer-panel{background:#151d28!important;border-top:2px solid #344458!important}
+.mixer-panel input[type=range]{accent-color:#c7d7ec}
+@media(max-width:1100px){.workspace{grid-template-columns:250px minmax(0,1fr)!important}.route-panel{display:none!important}}
+
+/* Serato-style one-tap vocal and instrumental isolation. */
+.quick-stems{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}
+.quick-stems button{background:#1d2736;border:1px solid #456077;border-radius:5px;color:#d4e6f5;padding:8px 10px;font-size:11px;font-weight:800;letter-spacing:.04em;cursor:pointer}
+.quick-stems button.selected{background:#cfff4d;color:#10191d;border-color:#cfff4d}
+.quick-stems button:hover{filter:brightness(1.16)}

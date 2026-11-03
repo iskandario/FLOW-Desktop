@@ -1,0 +1,7 @@
+#previous{display:none}
+@media(max-width:820px){
+  .library-drawer{top:18px;right:15px;bottom:auto}
+  .library-drawer:not([open]) summary{height:42px}
+  .library-drawer:not([open]) summary>b,
+  .library-drawer:not([open]) summary>em{display:none}
+}

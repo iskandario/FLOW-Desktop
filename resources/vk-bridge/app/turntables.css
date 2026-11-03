@@ -1,0 +1,33 @@
+/* Two independently controlled performance decks; no overlay on the play buttons. */
+:root{--deck-a:#60b9ff;--deck-b:#ff7fa8}
+body{background:#090c12;color:#e9f0fc}
+.topbar{height:58px}
+.workspace{height:calc(100vh - 395px);min-height:390px;grid-template-columns:minmax(215px,18%) minmax(600px,1fr) minmax(190px,16%)}
+.stage{display:flex;flex-direction:column;gap:0;padding:0;background:linear-gradient(135deg,#101926,#0b1018)}
+.stage-copy{order:2;padding:9px 18px;display:flex;align-items:center;gap:18px;border-top:1px solid #263547;border-bottom:1px solid #263547}
+.stage h1{font-size:15px;max-width:200px;min-width:100px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stage-copy>p{font-size:11px;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.eyebrow{display:none}.meta-row{margin:0;gap:10px}.meta-row>div{min-width:48px}.mix-readout{margin:0!important;flex:1;min-width:200px;padding:0!important}
+.wave-wrap{order:0;height:82px;width:calc(100% - 28px);margin:10px 14px 0}
+.transport{order:3;align-self:center;margin:6px 0;gap:12px}.transport button{height:32px}.transport .play{width:38px;height:38px}
+.deck-strip{order:1;flex:1;width:calc(100% - 28px);max-width:none;margin:12px 14px;grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr);gap:8px;min-height:250px}
+.deck-card{display:flex;flex-direction:column;min-width:0;min-height:245px;padding:14px 16px 14px;position:relative;border:1px solid #3c5267;border-top:3px solid var(--deck-a);background:linear-gradient(180deg,#1c293b,#111b29)}
+#deckB{border-top-color:var(--deck-b);background:linear-gradient(180deg,#2a202f,#181824)}
+.deck-card>div:first-child{font-size:12px;color:#b6dafa}.deck-card>b{margin:9px 0 3px;font-size:clamp(15px,1.25vw,22px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;max-width:100%}
+.deck-card>small{font-size:11px;letter-spacing:.12em}
+.deck-transport{position:static!important;display:grid!important;grid-template-columns:1fr 1fr 1fr!important;align-items:center;gap:9px;margin-top:auto;padding-top:13px}
+.deck-transport button{font:700 11px var(--mono);height:40px!important;min-width:0;border:1px solid #4c647e;border-radius:4px;color:#e1f0ff;background:#152235}
+.deck-transport .deck-play-button{grid-column:1/-1;min-height:54px!important;font-size:16px!important;background:#62c8ff;color:#07121d;border:0}
+#deckB .deck-play-button{background:#ff88b0;color:#20121b}
+.deck-transport .headphone-cue{grid-column:1/-1}.deck-transport label{grid-column:1/-1;font-size:10px}
+.deck-playhead{display:flex;flex-direction:column;gap:5px;margin-top:12px!important}.deck-playhead input{width:100%;accent-color:var(--deck-a);cursor:pointer}.deck-playhead span{font:10px var(--mono);color:#a9bacc;text-align:right}
+#deckB .deck-playhead input{accent-color:var(--deck-b)}
+.deck-card>em{height:2px;position:absolute;bottom:0;left:0;background:var(--deck-a)}#deckB>em{background:var(--deck-b)}
+.mix-core{display:flex;align-items:center;justify-content:center}.mix-core>div{height:84px}
+.stems-rack{height:117px;grid-template-columns:1fr 230px 1fr}.stem-deck,.stem-brain{min-height:0;padding:8px 12px}.stem-deck header{margin-bottom:7px}.stem-strip{gap:4px}.stem-strip b{font-size:9px}.stem-strip input{min-width:0}.stem-deck .separate-stems{font-size:10px}
+.mixer-panel{height:215px;grid-template-columns:130px minmax(220px,1fr) 200px minmax(220px,1fr) 80px;gap:14px;padding:10px 15px}
+.dj-channel{grid-template-columns:repeat(5,minmax(20px,1fr));gap:7px}.dj-channel label{min-width:0}.dj-channel input{min-width:0;width:100%}.crossfader input{accent-color:#e9f1ff}
+.drop-zone{height:46px}.drop-zone b{font-size:9px}.track-list{height:calc(100vh - 520px);min-height:100px}
+@media(max-width:1250px){.workspace{grid-template-columns:210px minmax(500px,1fr)}.route-panel{display:none}.mixer-panel{grid-template-columns:110px 1fr 180px 1fr}.master{display:none}}
+@media(max-width:850px){.workspace{display:block;height:auto}.stage{min-height:560px}.deck-strip{min-height:290px}.stems-rack{height:auto;grid-template-columns:1fr}.mixer-panel{height:auto;grid-template-columns:1fr 1fr}.crossfader{grid-column:1/-1}.library-panel{max-height:220px;overflow:auto}}
+@media(max-width:580px){.deck-strip{grid-template-columns:1fr;min-height:0}.mix-core{display:none}.deck-card{min-height:245px}.stage-copy{flex-wrap:wrap}.mixer-panel{grid-template-columns:1fr}}

@@ -1,0 +1,86 @@
+{
+  "manifest_version": 3,
+  "name": "FLOW — непрерывный режим для VK Музыки",
+  "version": "7.1.2",
+  "description": "FLOW Pro DJ 7.1.2: instant live stem pads, background WebGPU neural stems, clean native key-lock, persistent cache, BPM grids, mashups and Auto DJ.",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "activeTab",
+    "scripting",
+    "offscreen",
+    "debugger",
+    "tabs",
+    "tabCapture"
+  ],
+  "host_permissions": [
+    "https://vk.com/*",
+    "https://*.vk.com/*",
+    "https://vk.ru/*",
+    "https://*.vk.ru/*",
+    "https://*.userapi.com/*",
+    "https://*.vkuseraudio.net/*",
+    "https://*.vkuseraudio.ru/*",
+    "https://*.vkuseraudio.com/*",
+    "https://*.vk-cdn.net/*",
+    "https://*.okcdn.ru/*",
+    "https://huggingface.co/*",
+    "https://*.huggingface.co/*",
+    "https://*.hf.co/*",
+    "https://*.xethub.hf.co/*"
+    ,"http://127.0.0.1:17835/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; worker-src 'self'; connect-src 'self' https: http://127.0.0.1:17835; media-src 'self' blob: https:;"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "FLOW"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://vk.com/*",
+        "https://*.vk.com/*",
+        "https://vk.ru/*",
+        "https://*.vk.ru/*"
+      ],
+      "js": [
+        "vendor/hls.min.js",
+        "shared/mix-math.js",
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "live/*",
+        "app/*",
+        "stems/*",
+        "stems/assets/*",
+        "stems/assets/ort-1.29.0/*",
+        "stems/assets/ort-1.31.1/*",
+        "stems/models/*",
+        "vendor/hls.min.js",
+        "vendor/flow-audio-libs.js",
+        "vendor/flow-beat-grid.js",
+        "vendor/soundtouch-processor.js"
+      ],
+      "matches": [
+        "https://vk.com/*",
+        "https://*.vk.com/*",
+        "https://vk.ru/*",
+        "https://*.vk.ru/*"
+      ]
+    }
+  ]
+}

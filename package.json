@@ -1,0 +1,85 @@
+{
+  "name": "flow-desktop",
+  "version": "0.1.0",
+  "description": "FLOW native DJ workstation with VK bridge, real AI stems, BPM analysis and beat sync.",
+  "main": "./out/main/index.js",
+  "license": "MIT",
+  "author": "Alexander Liteplo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iskandario/FLOW-Desktop.git"
+  },
+  "scripts": {
+    "build:stem-worker": "esbuild resources/vk-bridge/stems/src/flow-mdx-worker.js --bundle --format=esm --platform=browser --outfile=resources/vk-bridge/stems/flow-mdx-worker.js",
+    "build:worklet": "esbuild src/worklet/deck-processor.ts --bundle --format=iife --outfile=src/renderer/public/worklets/deck-processor.js && esbuild src/worklet/autotune-processor.ts --bundle --format=iife --outfile=src/renderer/public/worklets/autotune-processor.js",
+    "dev": "npm run build:worklet && electron-vite dev",
+    "build": "npm run build:worklet && npm run build:stem-worker && electron-vite build",
+    "start": "npm run build && electron-vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
+    "icon": "electron scripts/make-icon.cjs",
+    "dist": "npm run build && electron-builder --mac"
+  },
+  "build": {
+    "appId": "io.flow.desktopdj",
+    "productName": "FLOW Desktop",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "out/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/vk-bridge",
+        "to": "vk-bridge"
+      },
+      {
+        "from": "resources/stem-worker",
+        "to": "stem-worker"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.music",
+      "target": [
+        "dir"
+      ],
+      "hardenedRuntime": true,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist",
+      "extendInfo": {
+        "NSCameraUsageDescription": "StemDeck records your camera for video reels of your mixes.",
+        "NSMicrophoneUsageDescription": "StemDeck records your microphone so you can talk over your mixes."
+      }
+    }
+  },
+  "dependencies": {
+    "essentia.js": "^0.1.3",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "signalsmith-stretch": "1.3.2",
+    "soundtouchjs": "^0.3.0",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.2.0",
+    "electron": "^41.7.1",
+    "electron-builder": "^26.15.3",
+    "electron-vite": "^5.0.0",
+    "esbuild": "^0.28.1",
+    "onnxruntime-web": "^1.29.0",
+    "typescript": "^6.0.3",
+    "vite": "^7.3.6",
+    "web-audio-separation": "^0.3.1"
+  },
+  "allowScripts": {
+    "electron@41.7.1": true,
+    "esbuild@0.25.12": true,
+    "esbuild@0.28.1": true,
+    "electron-winstaller@5.4.0": true,
+    "fsevents@2.3.3": true
+  }
+}

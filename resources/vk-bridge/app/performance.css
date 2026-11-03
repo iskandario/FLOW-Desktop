@@ -1,0 +1,32 @@
+/* FLOW Performance workspace — readable deck-first layout. */
+:root{--bg:#080b10;--panel:#11151d;--line:#293140;--acid:#54d3ff}
+body{background:#080a0e}
+.topbar{height:62px;background:#10141c;border-bottom:1px solid #333c49;padding-right:92px}
+.cue-device{display:flex;align-items:center;gap:9px;padding:0 10px;background:#171e28;border:1px solid #354256}
+.cue-device label{font:700 10px var(--mono);color:#aab9ce}
+.cue-device select{max-width:200px;height:34px;background:#111923;color:#fff;border:0;font:11px var(--mono)}
+.workspace{grid-template-columns:minmax(220px,19%) minmax(540px,1fr) minmax(210px,17%);min-height:0;height:calc(100vh - 430px)}
+.panel{background:#0c1118}.stage{min-height:0;overflow:hidden;background:#0a0f17;justify-content:flex-start;gap:12px}
+#aura{display:none}.stage:before{display:none}.stage-copy{padding:22px 25px 0;text-align:left;flex:none}
+.eyebrow{justify-content:flex-start}.stage h1{font-size:clamp(20px,1.8vw,30px);line-height:1.08;letter-spacing:-.03em;margin:9px 0 5px;text-align:left}
+.stage-copy>p{font-size:11px}.meta-row{margin-top:14px;justify-content:flex-start;gap:20px}
+.mix-readout{margin:16px 0 0!important;width:100%!important}
+.wave-wrap{flex:none;width:calc(100% - 44px);height:100px;margin:0 22px;border:1px solid #354354;border-radius:4px;background:#101b2a}
+.wave-wrap:before{content:'MASTER WAVEFORM · TOUCH TO SEEK';font-size:9px;color:#8a9bb0}
+.transport{margin:0;gap:14px}.transport button{height:44px;width:75px;font:700 11px var(--mono)}.transport .play{width:54px;height:54px}
+.deck-strip{width:calc(100% - 44px);max-width:none;grid-template-columns:minmax(0,1fr) 54px minmax(0,1fr);margin:0 22px 14px;gap:9px;flex:1;min-height:124px}
+.deck-card{padding:18px 16px 76px;border-radius:6px;background:#121b29;border:1px solid #455166}.deck-card>div{font-size:10px}.deck-card>b{font-size:clamp(13px,1.3vw,20px);margin-top:13px}.deck-card>small{font-size:10px}
+.deck-transport{bottom:13px;left:12px;right:12px;grid-template-columns:repeat(4,minmax(52px,1fr))!important;gap:8px}
+.deck-transport button{height:35px!important;border-radius:4px;font:700 10px var(--mono)}
+.deck-transport label{grid-column:1/-1;font-size:9px;grid-template-columns:50px 1fr 42px}
+.headphone-cue.active{background:#9ddfff!important;color:#08101c!important;border-color:#d3efff!important}
+.mix-core{justify-content:center}.mix-core>div{height:60px;width:2px;flex:none}.mix-core i{top:0}
+.mixer-panel{position:relative;bottom:auto;z-index:5;height:210px;grid-template-columns:170px minmax(225px,1fr) minmax(250px,1.1fr) minmax(225px,1fr) 90px;gap:20px;padding:18px 24px;background:#151b25}
+.dj-channel{grid-template-columns:repeat(5,minmax(28px,1fr));gap:8px}.dj-channel label{font-size:10px;gap:9px}.dj-channel>span,.crossfader>span,.master>span{font:700 11px var(--mono);color:#d9e2ef}
+.dj-channel label:first-of-type{grid-template-columns:40px 1fr 45px}.vocal-kill{height:29px;font-size:9px}.crossfader{align-self:center}.crossfader input{height:32px;cursor:ew-resize}
+.mixer-panel input[type=range]{accent-color:#63d5ff;min-height:20px;cursor:pointer}
+.stems-rack{grid-template-columns:1fr 250px 1fr}.stem-deck,.stem-brain{min-height:144px;padding:15px 20px}.stem-deck header b{font-size:10px}.stem-strip b{font-size:9px}
+.drop-zone{height:66px}.drop-icon,.drop-zone small{display:none}.drop-zone b{margin:0}.track-list{height:calc(100vh - 590px);min-height:100px}.route-list{height:calc(100vh - 650px);min-height:100px}
+@media(max-width:1400px){.workspace{grid-template-columns:220px minmax(500px,1fr)}.route-panel{display:none}.mixer-panel{grid-template-columns:135px 1fr 1fr;gap:12px;height:auto}.crossfader{grid-column:2/4}.master{display:none}}
+@media(max-width:950px){.workspace{height:auto;display:block}.library-panel{min-height:0}.track-list{height:200px}.stage{min-height:600px}.deck-strip{min-height:180px}.stems-rack{grid-template-columns:1fr}.mixer-panel{grid-template-columns:1fr 1fr}.crossfader{grid-column:1/-1}.cue-device label{display:none}}
+@media(max-width:650px){.deck-strip{grid-template-columns:1fr}.mix-core{display:none}.mixer-panel{grid-template-columns:1fr}.top-actions{flex-wrap:wrap}.cue-device select{max-width:130px}}

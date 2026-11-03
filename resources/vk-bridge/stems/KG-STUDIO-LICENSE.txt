@@ -1,0 +1,456 @@
+# License
+
+Copyright 2025-2026 Xiaohan Tian
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this project except in compliance with the License.
+You may obtain a copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+## Additional Terms
+
+1. **No Patent Applications**  
+   You may not use this software or any included assets, in whole or in part, to file or assist in filing any patent application, whether directly or indirectly, in any jurisdiction.
+
+2. **Attribution Requirement**
+   If you incorporate this software, or any portion of its source code or compiled output, into another software product (including applications, libraries, plugins, or services), you must provide the following credit in a prominent location (such as an "About" screen or documentation):
+
+   > Powered by **K.G.Studio**
+   > © 2025-2026 Xiaohan Tian
+
+   This requirement applies to software incorporation and redistribution only. It does not apply to content produced using this software, including but not limited to music, audio recordings, or other media.
+
+## Standard Terms
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an **"AS IS" BASIS**, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  
+See the License for the specific language governing permissions and limitations under the License.
+
+---
+
+## Third-Party Components
+
+This project includes resources from the following third-party projects.  
+Their original license notices **must be retained** in all copies or substantial portions of this project.
+
+---
+
+### 1. midi-js-soundfonts
+
+```
+Copyright (C) 2012 Benjamin Gleitzman (gleitz@mit.edu)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
+
+---
+
+### 2. FluidR3_GM SoundFont
+
+```
+Fluid (R3) SoundFont
+
+Copyright (c) 2000-2002, 2008, 2013 Frank Wen <getfrank@gmail.com>
+
+I hereby release Fluid under the MIT license, as described in COPYING.
+
+Regardless the implications or stipulations of the MIT license, the wishes 
+and intent of the author are as follows: 
+
+1. This soundfont is provided for free, for unlimited use, and can be used 
+   interchangably with other soundfonts for personal or commercial music 
+   composition. 
+
+2. In regards to bundling Fluid with software or hardware for commercial 
+   purposes (freeware with paid features, or paid completely), please 
+   follow these guidelines so that Fluid will not be construed as a commodity.
+
+     -Your design must have openness for anyone to be able to load whatever 
+      soundfont they want to use, and have full access to all the instruments 
+      in the soundfont. 
+
+     -You cannot lock access to Fluid by having people have to pay in order 
+      to get access to more instrument banks or instrument banks associated 
+      with specific tracks in the sequencer. 
+
+     -If you are confused, please contact me.
+
+3. If you use part of Fluid to make a new bank for public domain, document it 
+   and credit me. 
+
+4. Realistically, I cannot police or enforce what actually happens to Fluid, 
+   although I believe there are honorable people who have respected my wishes 
+   to keep the spirit of what I wanted the work to be, and thank all who have 
+   supported and used Fluid in their musical endeavors. 
+
+
+This package, of course, is the original Release 3 of Fluid.  
+
+Fluid was constructed in part from samples found in the public domain that I
+edited/cleaned/remixed/programmed and largely from recordings of my own and
+in conjunction with the people below who helped along the way:
+
+Suren M. Seron
+Scott Hanan
+Steve Aupperle
+Chris Gillman
+Alex Taubr
+Chris Prola
+Andrew Klenk
+Winfried Hubbe 
+Dylan
+Tim
+Gort
+Uros Katic 
+Ethan Winer (http://www.ethanwiner.com) 
+
+I'd also like to thank Alexander Ryan, Dan Reagan, and Thomas Hammer for 
+hosting the project for so many years. Without them, distribution would have 
+been impossible.
+
+And also Tobe Smithe, for bringing this to more people through Ubuntu.
+
+It's obviously been a few years since the project, but its nice to see that
+people are still enjoying my work and getting good use out of it.  As always,
+I'd like to hear some work done with Fluid so email me, or just email me to
+say hello and tell me what is going on in the computer musician world.
+Who knows, maybe I'll kick start this project again? ;)
+```
+
+---
+
+### 3. VexFlow
+
+```
+VexFlow - A JavaScript library for rendering music notation.
+Copyright (c) 2010 Mohit Muthanna Cheppudira
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+```
+
+---
+
+### 4. System Prompt Structure (based on Cline)
+
+Portions of the system prompt structure are derived from the Cline project,
+licensed under the Apache License, Version 2.0.
+
+Original project: [Cline](https://github.com/cline/cline)
+
+Modifications: Substantial textual and functional changes have been made; only the general content structure remains.
+
+---
+
+### 5. Gemma 4 E4B (LiteRT-LM)
+
+This project uses the Gemma 4 E4B model by Google LLC, accessed via LiteRT-LM.
+Gemma is licensed under the Apache License, Version 2.0, subject to the
+Google Gemma Terms of Use.
+
+Original model: https://huggingface.co/google/gemma-4-E4B-it
+Gemma Terms of Use: https://ai.google.dev/gemma/terms
+Prohibited Use Policy: https://ai.google.dev/gemma/prohibited_use_policy
+
+Gemma is provided under and subject to the Gemma Terms of Use found at
+ai.google.dev/gemma/terms.
+
+Copyright 2025 Google LLC
+
+---
+
+### 6. UVR-MDX-NET-Inst_HQ_3
+
+This project uses the UVR-MDX-NET-Inst_HQ_3 model from the Ultimate Vocal
+Remover (UVR) project, distributed as an ONNX model via
+https://huggingface.co/notabilia/uvr5-models.
+
+Ultimate Vocal Remover — https://github.com/Anjok07/ultimatevocalremovergui
+Authors: Anjok07, KimberleyJSN, and the UVR development community
+
+MDX-NET architecture — https://github.com/kuielab/mdx-net
+Authors: Woosung Choi, Minseok Kim, Jaehwa Chung, Daewon Lee, Soonyoung Jung (KUIELab)
+
+```
+MIT License
+
+Copyright (c) Anjok07, KimberleyJSN, and the UVR contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+```
+
+---
+
+### 7. MediaPipe / LiteRT (GenAI runtime)
+
+This project bundles the MediaPipe GenAI WebAssembly runtime
+(`genai_bundle.mjs`, `genai_wasm_internal.js/wasm`,
+`genai_wasm_module_internal.js/wasm`) from Google's MediaPipe project.
+
+MediaPipe is licensed under the Apache License, Version 2.0.
+
+Original project: https://github.com/google-ai-edge/mediapipe
+Copyright 2019 The MediaPipe Authors
+
+---
+
+---
+
+### 8. Meyda
+
+Meyda is an audio feature extraction library used for chord detection.
+
+Original project: https://github.com/meyda/meyda
+
+```
+MIT License
+
+Copyright (c) 2014 Hugh A. Rawlinson, Nevo Segal, Jakub Fiala
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+```
+
+---
+
+### 9. web-audio-beat-detector
+
+web-audio-beat-detector is a BPM detection library for the Web Audio API.
+
+Original project: https://github.com/chrisguttandin/web-audio-beat-detector
+
+```
+MIT License
+
+Copyright (c) 2026 Christoph Guttandin
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+---
+
+### 10. tonal
+
+tonal is a music theory library for parsing, analyzing, and manipulating musical
+notes, scales, chords, and keys.
+
+Original project: https://github.com/tonaljs/tonal
+
+```
+The MIT License (MIT)
+
+Copyright (c) 2015 danigb
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+---
+
+### 11. htdemucs_4s
+
+This project uses the htdemucs_4s model from the Demucs project by Facebook Research,
+used for music source separation (stem extraction).
+
+Original project: https://github.com/facebookresearch/demucs
+Model weights (original, PyTorch): https://dl.fbaipublicfiles.com/demucs/hybrid_transformer/955717e8-8726e21a.th
+ONNX conversion (original): https://huggingface.co/timcsy/demucs-web-onnx/resolve/main/htdemucs_embedded.onnx
+ONNX model downloaded by this project (unmodified copy of the above): https://huggingface.co/notabilia/uvr5-models/resolve/main/htdemucs_embedded.onnx
+
+```
+MIT License
+
+Copyright (c) Facebook, Inc. and its affiliates.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this model and associated documentation files, to deal in the model without
+restriction, including without limitation the rights to use, copy, modify,
+merge, publish, distribute, sublicense, and/or sell copies of the model, and
+to permit persons to whom the model is furnished to do so, subject to the
+following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the model.
+
+THE MODEL IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE MODEL OR THE USE OR OTHER DEALINGS IN THE
+MODEL.
+```
+
+---
+
+### 12. onnxruntime-web
+
+onnxruntime-web is a JavaScript library for running ONNX models in the browser,
+used for on-device neural network inference.
+
+Original project: https://github.com/microsoft/onnxruntime
+
+```
+MIT License
+
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+---
+
+### 13. demucs-web
+
+demucs-web is a browser-based wrapper for running Demucs stem separation models
+in the browser via ONNX Runtime Web.
+
+Original project: https://github.com/timcsy/demucs-web
+
+```
+MIT License
+
+Copyright (c) 2024
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+---
+
+### 14. Hopkins Reverb impulse responses
+
+Reverb impulse responses by Greg Hopkins / Hopkins Media Services, from the
+Original Hopkins IR Collection (2012).
+
+Source: https://hopkinsmedia.services/ir
+Bundled files and original filenames: public/resources/fx/reverb/README.md
+Modifications: 50 ms linear endpoint fade; no trimming, resampling, or gain change.
+
+License: Creative Commons Attribution (CC BY), confirmed by the project owner
+on 2026-10-11. The exact CC BY version has not been specified; no version number
+is inferred here. These assets are not licensed under this project's Apache
+license. Commercial use is permitted under the applicable CC BY terms.
+
+Retain author attribution, the source link, and notice of modifications when
+redistributing these IR assets, and comply with the applicable CC BY license.
+
+The temporary non-commercial restriction has been removed following this
+confirmation. The non-commercial wording in the archive's historical 2012
+report is superseded by the confirmed Creative Commons Attribution license.
+
+---
+
+Apache License Version 2.0, January 2004: http://www.apache.org/licenses/LICENSE-2.0

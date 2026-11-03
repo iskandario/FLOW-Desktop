@@ -1,0 +1,3 @@
+.flow-button{grid-template-columns:48px 1fr}
+.flow-hero:not(.playing) .mini-transport,
+.flow-hero:not(.playing) .hero-timeline{display:none}

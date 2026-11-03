@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#05060a">
+  <title>FLOW — Two-Deck DJ</title>
+  <meta name="description" content="A standalone two-deck automatic DJ that mixes your local music in the browser.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pro-v7.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="FLOW home"><i></i><b>FLOW</b><span>AUTONOMOUS DJ · V7.1.2</span></a>
+    <div class="engine-pill"><i id="engineDot"></i><span id="engineState">ENGINE IDLE</span></div>
+    <div class="auto-control"><button id="autoToggle" class="on" aria-label="Toggle Auto DJ"><i></i></button><div><b id="modeLabel">AUTO DJ</b><span id="autoText">FLOW CONTROLS THE MIX</span></div></div>
+    <div class="top-actions">
+      <div class="cue-device"><label for="cueOutput">HEADPHONES</label><select id="cueOutput" aria-label="Headphone output"><option value="">SELECT OUTPUT</option></select></div><button class="ghost" id="demoTop">REFRESH VK LIBRARY</button>
+      <label class="primary compact">ADD LOCAL FILES<input id="fileInputTop" type="file" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,.flac" multiple hidden></label>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <aside class="panel library-panel">
+      <div class="panel-head"><div><span>01</span><h2>LIBRARY</h2></div><b id="libraryCount">0 TRACKS</b></div>
+      <label class="drop-zone" id="dropZone">
+        <input id="fileInput" type="file" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,.flac" multiple hidden>
+        <span class="drop-icon">＋</span>
+        <b>DROP MUSIC HERE</b>
+        <small>MP3 · WAV · M4A · AAC · OGG</small>
+      </label>
+      <div class="library-toolbar">
+        <input id="search" type="search" placeholder="Search library" aria-label="Search library">
+        <button id="clearLibrary" title="Clear library">CLEAR</button>
+      </div>
+      <div class="track-list" id="libraryList">
+        <div class="empty-copy"><b>VK library is loading.</b><span>Open your VK Music playlist to discover tracks.</span></div>
+      </div>
+    </aside>
+
+    <section class="stage">
+      <canvas id="aura" aria-hidden="true"></canvas>
+      <div class="stage-copy">
+        <div class="eyebrow"><span id="liveBadge">READY</span><em id="deckBadge">DECK A</em></div>
+        <h1 id="nowTitle">Build a set.<br>Let it flow.</h1>
+        <p id="nowArtist">Open a VK Music playlist and refresh your library.</p>
+        <div class="meta-row">
+          <div><b id="nowBpm">—</b><span>BPM</span></div>
+          <div><b id="nowEnergy">—</b><span>ENERGY</span></div>
+          <div><b id="nowTime">0:00</b><span id="nowDuration">/ 0:00</span></div>
+        </div>
+        <div class="mix-readout">
+          <div class="mix-side now-side"><span>NOW ON AIR</span><b id="telemetryNow">WAITING FOR MUSIC</b><em id="telemetryNowMeta">DECK A · — BPM</em></div>
+          <div class="phase-core"><i></i><b id="mixMode">AUTO DJ</b><span id="phaseStatus">BEAT GRID IDLE</span></div>
+          <div class="mix-side next-side"><span>NEXT DECK</span><b id="telemetryNext">NOT PREPARED</b><em id="telemetryNextMeta">DECK B · — BPM</em></div>
+        </div>
+      </div>
+
+      <div class="wave-wrap">
+        <canvas id="waveform"></canvas>
+        <div class="wave-progress" id="waveProgress"></div>
+        <input id="seek" type="range" min="0" max="100" value="0" step="0.01" aria-label="Seek current track">
+      </div>
+
+      <div class="transport">
+        <button id="back15" aria-label="Back 15 seconds">−15</button>
+        <button class="play" id="play" aria-label="Play or pause">▶</button>
+        <button class="mashup-button" id="mashup" aria-label="Build vocal and instrumental mashup">MASHUP</button>
+        <button id="skip" aria-label="Mix next track">NEXT</button>
+      </div>
+
+      <div class="deck-strip" role="group" aria-label="Independent DJ decks">
+        <article class="deck-card active" id="deckA">
+          <div><span>DECK A</span><i></i></div><b id="deckATitle">EMPTY</b><small id="deckAState">STANDBY</small>
+          <div class="deck-stems" data-quick-deck="a" role="group" aria-label="Deck A visible stem modes"><span>AI STEMS</span><button type="button" data-quick-mode="all" data-deck="a" class="selected" aria-pressed="true">FULL</button><button type="button" data-quick-mode="vocal" data-deck="a" aria-pressed="false">VOCAL</button><button type="button" data-quick-mode="instrumental" data-deck="a" aria-pressed="false">INSTRUMENTAL</button></div>
+          <div class="deck-transport"><button class="deck-play-button" data-deck="a" data-action="toggle" aria-label="Play or pause deck A">▶ PLAY A</button><button data-deck="a" data-action="cue">CUE</button><button data-deck="a" data-action="sync">SYNC</button><button class="headphone-cue" data-cue="a" aria-pressed="false">◉ CUE A</button><label>PITCH <input id="pitchA" type="range" min="-12" max="12" value="0" step="0.1"><output id="pitchAOut">0.0%</output></label></div>
+          <div class="deck-playhead"><input class="deck-seek" id="deckASeek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek deck A"><span id="deckATime">0:00 / 0:00</span></div><em id="deckAProgress"></em>
+        </article>
+        <div class="mix-core"><span>A</span><div><i id="mixNeedle"></i></div><span>B</span></div>
+        <article class="deck-card" id="deckB">
+          <div><span>DECK B</span><i></i></div><b id="deckBTitle">EMPTY</b><small id="deckBState">STANDBY</small>
+          <div class="deck-stems" data-quick-deck="b" role="group" aria-label="Deck B visible stem modes"><span>AI STEMS</span><button type="button" data-quick-mode="all" data-deck="b" class="selected" aria-pressed="true">FULL</button><button type="button" data-quick-mode="vocal" data-deck="b" aria-pressed="false">VOCAL</button><button type="button" data-quick-mode="instrumental" data-deck="b" aria-pressed="false">INSTRUMENTAL</button></div>
+          <div class="deck-transport"><button class="deck-play-button" data-deck="b" data-action="toggle" aria-label="Play or pause deck B">▶ PLAY B</button><button data-deck="b" data-action="cue">CUE</button><button data-deck="b" data-action="sync">SYNC</button><button class="headphone-cue" data-cue="b" aria-pressed="false">◉ CUE B</button><label>PITCH <input id="pitchB" type="range" min="-12" max="12" value="0" step="0.1"><output id="pitchBOut">0.0%</output></label></div>
+          <div class="deck-playhead"><input class="deck-seek" id="deckBSeek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek deck B"><span id="deckBTime">0:00 / 0:00</span></div><em id="deckBProgress"></em>
+        </article>
+      </div>
+    </section>
+
+    <aside class="panel route-panel">
+      <div class="panel-head"><div><span>02</span><h2>ROUTE</h2></div><b id="routeMode">ENDLESS</b></div>
+      <div class="arc-picker" id="arcPicker">
+        <button data-arc="wave" class="active">WAVE</button><button data-arc="rise">RISE</button><button data-arc="cruise">CRUISE</button>
+      </div>
+      <div class="route-list" id="routeList">
+        <div class="empty-copy"><b>No route yet.</b><span>FLOW will arrange compatible tracks into an energy arc.</span></div>
+      </div>
+      <div class="transition-card">
+        <div><span>NEXT TRANSITION</span><b id="transitionKind">SAFE BLEND</b></div>
+        <h3 id="transitionTitle">Waiting for music</h3>
+        <p id="transitionReason">Add at least two tracks to unlock continuous mixing.</p>
+        <div class="transition-meter"><i id="transitionMeter"></i></div>
+      </div>
+      <button class="rebuild" id="rebuild">↻ REBUILD ROUTE</button>
+    </aside>
+  </main>
+
+  <section class="stems-rack" id="stemsRack">
+    <div class="stem-deck" data-stem-deck="a"><header><b>A · STEM PADS</b><button class="separate-stems" data-deck="a" title="Prepare real neural vocal and instrumental stems">PREPARE AI</button><div class="quick-stems" data-quick-deck="a" role="group" aria-label="Deck A stem modes"><button type="button" data-quick-mode="all" data-deck="a" class="selected" aria-pressed="true">FULL</button><button type="button" data-quick-mode="vocal" data-deck="a" aria-pressed="false">VOCAL</button><button type="button" data-quick-mode="instrumental" data-deck="a" aria-pressed="false">INSTRUMENTAL</button></div></header><div class="stem-controls"></div></div>
+    <div class="stem-brain"><button id="stemModel">MODEL BUNDLED</button><b id="stemStatus">MDX INST HQ 3 · STANDBY</b><span id="stemProgress">REAL VOCAL + INSTRUMENTAL · BACKGROUND CACHE</span><i><em id="stemProgressBar"></em></i></div>
+    <div class="stem-deck" data-stem-deck="b"><header><b>B · STEM PADS</b><button class="separate-stems" data-deck="b" title="Prepare real neural vocal and instrumental stems">PREPARE AI</button><div class="quick-stems" data-quick-deck="b" role="group" aria-label="Deck B stem modes"><button type="button" data-quick-mode="all" data-deck="b" class="selected" aria-pressed="true">FULL</button><button type="button" data-quick-mode="vocal" data-deck="b" aria-pressed="false">VOCAL</button><button type="button" data-quick-mode="instrumental" data-deck="b" aria-pressed="false">INSTRUMENTAL</button></div></header><div class="stem-controls"></div></div>
+  </section>
+
+  <section class="mixer-panel">
+    <div class="channel dj-channel" data-channel="a"><span>DECK A MIXER</span><label>GAIN<input id="gainA" type="range" min="0" max="1" value="1" step="0.01"><output id="gainAOut">100%</output></label><label>LOW<input id="lowA" type="range" min="-24" max="9" value="0" step="1"></label><label>MID<input id="midA" type="range" min="-24" max="9" value="0" step="1"></label><label>HIGH<input id="highA" type="range" min="-24" max="9" value="0" step="1"></label><label>FILTER<input id="filterA" type="range" min="0" max="1" value="0" step="0.01"></label><button class="vocal-kill" data-deck="a">VOCAL EQ · NOT STEMS</button></div>
+    <div class="crossfader"><span>CROSSFADER</span><div><b>A</b><input id="crossfader" type="range" min="0" max="1" value="0" step="0.001"><b>B</b></div></div>
+    <div class="channel dj-channel" data-channel="b"><span>DECK B MIXER</span><label>GAIN<input id="gainB" type="range" min="0" max="1" value="1" step="0.01"><output id="gainBOut">100%</output></label><label>LOW<input id="lowB" type="range" min="-24" max="9" value="0" step="1"></label><label>MID<input id="midB" type="range" min="-24" max="9" value="0" step="1"></label><label>HIGH<input id="highB" type="range" min="-24" max="9" value="0" step="1"></label><label>FILTER<input id="filterB" type="range" min="0" max="1" value="0" step="0.01"></label><button class="vocal-kill" data-deck="b">VOCAL EQ · NOT STEMS</button></div>
+    <div class="master"><span>MASTER</span><div id="vu"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+  </section>
+
+  <div class="welcome hidden" id="welcome" aria-hidden="true">
+    <div class="welcome-orb"></div>
+    <span class="welcome-mark">FLOW / 001</span>
+        <h2>Your VK library.<br><em>Our DJ engine.</em></h2>
+        <p>FLOW reads the tracks from this VK page, then streams and mixes them through its own independent two-deck Web Audio engine.</p>
+        <div><button class="primary" id="welcomeDemo">MIX VK LIBRARY</button><label class="secondary">ADD LOCAL FILES<input id="welcomeFiles" type="file" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,.flac" multiple hidden></label></div>
+        <small>VK AUTH BRIDGE · OWN AUDIO ENGINE · NO NATIVE VK PLAYER</small>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="../vendor/hls.min.js"></script>
+  <script src="../vendor/flow-audio-libs.js"></script>
+  <script src="../vendor/flow-beat-grid.js"></script>
+  <script src="stem-cache.js"></script>
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

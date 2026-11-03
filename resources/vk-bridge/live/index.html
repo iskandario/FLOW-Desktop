@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FLOW — музыка сама находит продолжение</title>
+  <link rel="stylesheet" href="flow.css">
+  <link rel="stylesheet" href="siri.css">
+  <link rel="stylesheet" href="siri-polish.css">
+  <link rel="stylesheet" href="ribbon.css">
+  <link rel="stylesheet" href="ribbon-polish.css">
+  <link rel="stylesheet" href="manual.css">
+</head>
+<body class="siri-experience">
+  <canvas id="auraCanvas" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="siri-header">
+    <div class="wordmark"><i></i><b>FLOW</b></div>
+    <div class="engine-state"><i id="engineDot"></i><span id="engineText">готов к запуску</span></div>
+    <div class="header-actions hidden-utility"><button id="refresh" class="quiet-action">↻</button><button id="stop" class="quiet-action">■</button></div>
+  </header>
+
+  <main class="siri-stage" id="nowCard">
+    <div class="aura-anchor" aria-hidden="true"><span id="coverGlyph">F</span></div>
+    <section class="siri-copy">
+      <div class="source-line"><span class="live-dot"></span><b id="sourceTitle">Твоя музыка</b><em id="sourceCount">0</em></div>
+      <h1 id="nowTitle">Музыка сама<br>находит продолжение.</h1>
+      <p id="nowArtist">Один запуск. Никаких настроек до старта.</p>
+      <div class="feature-pills"><span id="nowBpm">BPM — в фоне</span><span id="nowVibe">вайб — в фоне</span><span id="nowFit">переход — в фоне</span></div>
+
+      <button id="startParty" class="siri-start"><i>▶</i><span>Включить FLOW</span><em>музыка начнётся сразу</em></button>
+      <div class="siri-transport">
+        <button id="previous">↶</button><button id="play">Ⅱ</button><button id="skip">↝</button>
+      </div>
+      <div class="timeline siri-timeline"><i><em id="timelineBar"></em></i><div><span id="elapsed">0:00</span><span id="remaining">−0:00</span></div></div>
+
+      <section class="blend-lab" id="blendLab">
+        <div class="blend-head"><b>ПЕРЕХОД</b><span id="blendStatus">готов по нажатию</span><button id="jumpTransition">Свести сейчас ↝</button></div>
+        <div class="blend-lane current-lane"><label><i>A</i><span id="blendCurrentTitle">текущий трек</span></label><div><em id="blendCurrentProgress"></em><strong id="blendZone"></strong></div></div>
+        <div class="blend-lane next-lane"><label><i>B</i><span id="blendNextTitle">следующий трек</span></label><div><em id="blendNextReady"></em></div></div>
+        <input id="seekTrack" type="range" min="0" max="100" value="0" step="0.05" aria-label="Перемотка текущего трека">
+      </section>
+    </section>
+  </main>
+
+  <section class="next-pill" id="transitionCard">
+    <span class="next-orb">↝</span>
+    <div><small>FLOW ГОТОВИТ ДАЛЬШЕ</small><b id="transitionTitle">Следующий трек появится во время воспроизведения</b><em id="transitionReason">Запускать анализ заранее не нужно.</em></div>
+    <strong id="transitionDuration">—</strong><i>сек</i>
+  </section>
+
+  <div class="analysis-chip" id="analysisProgress"><i></i><span id="analysisLabel">начнёт слушать вместе с тобой</span><b id="analysisPercent">0%</b><em id="analysisBar"></em><small id="sourceMeta">коллекция ещё не загружена</small></div>
+
+  <details class="glass-drawer route-drawer">
+    <summary><span>⌁</span><b>Поток</b><em>что будет дальше</em></summary>
+    <div class="drawer-head"><div><small>МАРШРУТ</small><h2>Следующие треки</h2></div><button id="clearSelection">Очистить</button></div>
+    <div id="queueList" class="queue-scroll"></div>
+  </details>
+
+  <details class="glass-drawer library-drawer">
+    <summary><span>♫</span><b>Коллекция</b><em><strong id="libraryCount">0</strong> треков</em></summary>
+    <div class="library-head"><div><small>МУЗЫКА ДЛЯ FLOW</small><h2>Выбери источник</h2></div><label class="search">⌕<input id="search" placeholder="Найти трек или артиста"></label><div class="selection"><b id="selectedCount">0</b><span>в потоке</span><button id="selectAll">Выбрать всё</button></div></div>
+    <div class="track-columns"><span></span><span>ТРЕК</span><span>ХАРАКТЕР</span><span>BPM</span><span>ЭНЕРГИЯ</span><span></span></div>
+    <div class="track-list" id="trackList"></div>
+  </details>
+
+  <details class="glass-drawer settings-drawer">
+    <summary><span>⌘</span><b>Характер</b><em>не обязательно</em></summary>
+    <div class="settings-body">
+      <div class="arc-picker" id="arcPicker">
+        <button data-arc="wave" class="active"><i class="arc wave"></i><b>Волна</b><span>разгон → пик → выход</span></button>
+        <button data-arc="rise"><i class="arc rise"></i><b>Разгон</b><span>каждый трек выше</span></button>
+        <button data-arc="cruise"><i class="arc cruise"></i><b>Ровный грув</b><span>держать настроение</span></button>
+      </div>
+      <label>Глубина<select id="scope"><option value="12">12 треков</option><option value="30" selected>30 треков</option><option value="all">Вся коллекция</option></select></label>
+      <button id="build">Переанализировать</button>
+    </div>
+  </details>
+
+  <details class="glass-drawer manual-drawer">
+    <summary><span>◫</span><b>DJ</b><em>ручное сведение и mashup</em></summary>
+    <div class="manual-console">
+      <section class="manual-deck deck-a" data-deck="a">
+        <header><i>A</i><div><b id="manualTitleA">Deck A</b><span id="manualArtistA">трек не загружен</span></div><em id="manualTimeA">0:00 / 0:00</em></header>
+        <input id="manualSeekA" class="deck-seek" type="range" min="0" max="100" value="0" step="0.05">
+        <div class="deck-buttons"><button data-manual-action="restart" data-deck="a">↶</button><button data-manual-action="toggle" data-deck="a" id="manualPlayA">▶</button><button id="manualLoadA">Загрузить текущий</button></div>
+        <label>VOL <input id="manualVolumeA" type="range" min="0" max="1" value="1" step="0.01"></label>
+        <label>TEMPO <input id="manualRateA" type="range" min="0.88" max="1.12" value="1" step="0.001"><output id="manualRateOutA">0.0%</output></label>
+      </section>
+      <section class="manual-deck deck-b" data-deck="b">
+        <header><i>B</i><div><b id="manualTitleB">Deck B</b><span id="manualArtistB">трек не загружен</span></div><em id="manualTimeB">0:00 / 0:00</em></header>
+        <input id="manualSeekB" class="deck-seek" type="range" min="0" max="100" value="0" step="0.05">
+        <div class="deck-buttons"><button data-manual-action="restart" data-deck="b">↶</button><button data-manual-action="toggle" data-deck="b" id="manualPlayB">▶</button><button id="manualLoadB">Загрузить следующий</button></div>
+        <label>VOL <input id="manualVolumeB" type="range" min="0" max="1" value="0" step="0.01"></label>
+        <label>TEMPO <input id="manualRateB" type="range" min="0.88" max="1.12" value="1" step="0.001"><output id="manualRateOutB">0.0%</output></label>
+      </section>
+      <div class="manual-mixer">
+        <button id="manualSync">SYNC PHASE</button><label><span>A</span><input id="manualCrossfader" type="range" min="0" max="1" value="0" step="0.001"><span>B</span></label><button id="manualMixNow">AUTO MIX →</button>
+      </div>
+    </div>
+  </details>
+
+  <div class="hidden-telemetry" aria-hidden="true"><canvas id="energyCanvas"></canvas><h3 id="journeyTitle">Поток</h3></div>
+  <div id="toast"></div>
+  <script src="visualizer.js"></script>
+  <script src="flow.js"></script>
+</body>
+</html>
