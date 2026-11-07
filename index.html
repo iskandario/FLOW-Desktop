@@ -7,4 +7,7 @@
 <section id="macPanel" hidden><h2>Библиотека VK</h2><button id="pair">Подключить FLOW на Mac</button><div id="connected" hidden><button id="login">Вход VK</button> <button id="library">Мои треки</button> <button id="autoVK" hidden>▶ Автосет из VK</button><div id="catalog"></div><button id="more" hidden>Ещё треки</button>
 <h2>Светомузыка</h2><input type="password" id="lightToken" autocomplete="off" placeholder="Токен локального Home Assistant"><button id="lamps">Найти лампу</button><select id="lamp" aria-label="Лампа"></select><label><input type="checkbox" id="lightOn" disabled>Свет на ударах сета</label></div><p role="status" id="bridgeStatus"></p></section>
 <details><summary>Мобильный VK ID</summary><div id="vk"></div></details>
+<details id="pairDevices"><summary>Связать телефон и Mac</summary>
+<p id="steps"></p><textarea id="signal" rows="3" aria-label="Код сопряжения" placeholder="Код сопряжения"></textarea>
+<button id="invite">Создать приглашение</button><button id="answer">Ответить на приглашение</button><button id="confirm">Принять ответ</button><button id="copySignal">Скопировать код</button><button id="unlink">Отключить</button><p id="peerStatus" role="status"></p></details>
 </main><script type="module" src="./app.js"></script></body></html>
